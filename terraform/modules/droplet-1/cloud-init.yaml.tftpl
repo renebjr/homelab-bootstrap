@@ -1,0 +1,14 @@
+#cloud-config
+disable_root: true
+ssh_pwauth: false
+
+users:
+  - name: ${username}
+    gecos: ${username}
+    groups: sudo
+    shell: /bin/bash
+    lock_passwd: false
+    passwd: '${password_hash}'
+    sudo: ALL=(ALL) ALL
+    ssh_authorized_keys:
+      - '${ssh_public_key}'
